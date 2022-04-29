@@ -814,8 +814,10 @@ ul{
 
     var x = window.matchMedia("(max-width: 991px)")
 
-    
+    let selectedTopic;
+
     for (let i = 0; i < topics.length; i++) {
+
 
         //Movement
         $(topics[i]).click(function(e){
@@ -852,14 +854,20 @@ ul{
           });
     
           document.getElementById("topictxt").innerHTML = titles[i];
-          //document.getElementById('listtxt').innerHTML = <li> + subtopics[i] + </li>;         
+          //document.getElementById('listtxt').innerHTML = <li> + subtopics[i] + </li>;   
+          
+          selectedTopic = i;
+
+
+          //Open url 
+          $(".topic-container").click(function(e){
+                console.log("selectedTopic = " + selectedTopic);
+                e.preventDefault(); 
+                window.open(topicsurls[selectedTopic], '_parent'); 
+          })
+          
       });
 
-      //Open url 
-      $(".topic-container").click(function(e){
-            e.preventDefault(); 
-            window.open(topicsurls[i], '_parent').focus(); 
-        })
     }
     
     //Hover and Out
